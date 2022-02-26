@@ -6,7 +6,7 @@ module.exports = defineConfig({
     lib: {
       entry: path.resolve(__dirname, "lib/ConvertImages.ts"),
       name: "ConvertImages",
-      fileName: (format) => `convert-images.${format}.js`,
+      fileName: (format) => `js-convert-images.${format}.js`,
       declaration: true,
     },
     // rollupOptions: {

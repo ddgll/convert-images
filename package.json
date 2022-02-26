@@ -1,5 +1,5 @@
 {
-  "name": "convert-images",
+  "name": "js-convert-images",
   "description": "Convert images from an url or an input file to another type",
   "version": "0.1.0",
   "repository": {
@@ -9,12 +9,12 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/convert-images.umd.js",
-  "module": "./dist/convert-images.es.js",
+  "main": "./dist/js-convert-images.umd.js",
+  "module": "./dist/js-convert-images.es.js",
   "exports": {
     ".": {
-      "import": "./dist/convert-images.es.js",
-      "require": "./dist/convert-images.umd.js"
+      "import": "./dist/js-convert-images.es.js",
+      "require": "./dist/js-convert-images.umd.js"
     }
   },
   "types": "./dist/types/index.d.ts",
