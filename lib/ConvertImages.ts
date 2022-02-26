@@ -1,10 +1,6 @@
-export interface ImgToWebpOptions {
-  download?: boolean;
-  width?: number | null;
-  height?: number | null;
-}
+import { ConvertImageType, ConvertImageOptions } from "./index.d";
 
-export class ImgToWebp {
+export class ConvertImage {
   #canvas: HTMLCanvasElement;
   #ctx: CanvasRenderingContext2D | null;
 
@@ -17,7 +13,7 @@ export class ImgToWebp {
 
   convertImageFromUrl(
     url: string,
-    options?: ImgToWebpOptions
+    options?: ConvertImageOptions
   ): Promise<string> {
     if (!url) return Promise.reject("No Url");
     return new Promise((resolve, reject) => {
@@ -47,11 +43,14 @@ export class ImgToWebp {
   #imageOnLoad =
     (
       image: HTMLImageElement,
-      options: ImgToWebpOptions,
+      options: ConvertImageOptions,
       resolve: (value: string | PromiseLike<string>) => void
     ) =>
     (): void => {
       if (!this.#ctx) return;
+      const mimeType: ConvertImageType =
+        options && options.type ? options.type : ConvertImageType.Webp;
+      const name: string = options && options.name ? options.name : "image";
       const scale = this.#getScale(
         image.width,
         image.height,
@@ -61,16 +60,19 @@ export class ImgToWebp {
       this.#canvas.width = image.width * scale;
       this.#canvas.height = image.height * scale;
       this.#ctx.drawImage(image, 0, 0, this.#canvas.width, this.#canvas.height);
-      const webp = this.#canvas.toDataURL("image/webp");
+      const webp = this.#canvas.toDataURL(`image/${mimeType}`);
       if (!options || !options.download) return resolve(webp);
       const a = document.createElement("a");
       a.href = webp;
-      a.download = "image.webp";
+      a.download = `${name}.${mimeType}`;
       a.click();
       resolve(webp);
     };
 
-  convertImageFromFile(file: File, options: ImgToWebpOptions): Promise<string> {
+  convertImageFromFile(
+    file: File,
+    options: ConvertImageOptions
+  ): Promise<string> {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.addEventListener(

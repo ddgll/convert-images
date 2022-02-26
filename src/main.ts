@@ -1,7 +1,8 @@
 import "./style.css";
-import { ImgToWebp, ImgToWebpOptions } from "../lib/ImgToWebp";
+import { ConvertImage } from "../lib/ConvertImages";
+import { ConvertImageType, ConvertImageOptions } from "../lib/index.d";
 
-const converter = new ImgToWebp();
+const converter = new ConvertImage();
 
 const inputCheckbox: HTMLInputElement | null =
   document.querySelector("input.checkbox");
@@ -12,18 +13,33 @@ const inputHeight: HTMLInputElement | null =
 const button: HTMLButtonElement | null = document.querySelector("button");
 const input: HTMLInputElement | null = document.querySelector("input.file");
 const image: HTMLImageElement | null = document.querySelector("img.result");
+const typeSelect: HTMLSelectElement | null =
+  document.querySelector("select.type");
 
 if (button) {
   button.onclick = () => {
-    if (!inputCheckbox || !inputWidth || !inputHeight || !input || !image)
+    if (
+      !inputCheckbox ||
+      !inputWidth ||
+      !inputHeight ||
+      !input ||
+      !image ||
+      !typeSelect
+    )
       return;
+    const type: HTMLOptionElement | null =
+      typeSelect.querySelector("option:checked");
+    const mimeType: ConvertImageType = <ConvertImageType>(
+      (type && type.value && type.value.length ? type.value : "webp")
+    );
     const download = inputCheckbox.checked;
     const width = +inputWidth.value || 400;
     const height = +inputHeight.value || 400;
-    const options: ImgToWebpOptions = {
+    const options: ConvertImageOptions = {
       download,
       width,
       height,
+      type: mimeType,
     };
     if (!input.files || !input.files.length) {
       converter

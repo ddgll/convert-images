@@ -10,6 +10,16 @@
     <label><input type="checkbox" class="checkbox" /> Download ?</label><br />
     <div>Max width: <input type="number" class="width" value="400" /></div>
     <div>Max height: <input type="number" class="height" value="200" /></div>
+    <div>
+      Type:
+      <select class="type">
+        <option value="bmp">BMP</option>
+        <option value="jpeg">JPEG</option>
+        <option value="png">PNG</option>
+        <option value="gif">GIF</option>
+        <option selected value="webp">WEBP</option>
+      </select>
+    </div>
     <input type="file" class="file" name="file" /><br />
     <button type="button" class="convert">Convert !</button>
     <img class="result" download="image.webp" />

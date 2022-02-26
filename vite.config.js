@@ -4,9 +4,10 @@ const { defineConfig } = require("vite");
 module.exports = defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, "lib/ImgToWebp.ts"),
-      name: "ImgToWebp",
-      fileName: (format) => `img-to-webp.${format}.js`,
+      entry: path.resolve(__dirname, "lib/ConvertImages.ts"),
+      name: "ConvertImages",
+      fileName: (format) => `convert-images.${format}.js`,
+      declaration: true,
     },
     // rollupOptions: {
     //   // make sure to externalize deps that shouldn't be bundled

@@ -1,13 +1,27 @@
 {
-  "name": "webpjs",
-  "description": "Transform any image in webp",
+  "name": "convert-images",
+  "description": "Convert images from an url or an input file to another type",
   "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ddgll/webpjs.git"
   },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/convert-images.umd.js",
+  "module": "./dist/convert-images.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/convert-images.es.js",
+      "require": "./dist/convert-images.umd.js"
+    }
+  },
+  "types": "./dist/types/index.d.ts",
   "keywords": [
-    "image to webp",
+    "png to webp",
+    "jpeg to webp",
+    "git to webp",
     "webp",
     "javascript"
   ],
@@ -19,7 +33,7 @@
   "homepage": "https://github.com/ddgll/webpjs#readme",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && mkdir dist/types && cp lib/index.d.ts dist/types/index.d.ts",
     "preview": "vite preview"
   },
   "devDependencies": {
