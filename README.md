@@ -1,2 +1,2 @@
-# convert-images
-Convert images in javascript
+# webpjs
+Transform an image in webp
