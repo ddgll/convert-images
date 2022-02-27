@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ddgll/webpjs.git"
+    "url": "git+https://github.com/ddgll/convert-images.git"
   },
   "files": [
     "dist"
@@ -28,9 +28,9 @@
   "author": "David Grill <grilldotcom@gmail.com>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/ddgll/webpjs/issues"
+    "url": "https://github.com/ddgll/convert-images/issues"
   },
-  "homepage": "https://github.com/ddgll/webpjs#readme",
+  "homepage": "https://github.com/ddgll/convert-images#readme",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && mkdir dist/types && cp lib/index.d.ts dist/types/index.d.ts",
