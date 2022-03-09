@@ -13,3 +13,5 @@ export interface ConvertImageOptions {
   height?: number | null;
   type?: ConvertImageType;
 }
+
+declare module "js-convert-images";

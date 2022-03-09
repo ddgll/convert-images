@@ -1,7 +1,7 @@
 {
   "name": "js-convert-images",
   "description": "Convert images from an url or an input file to another type",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ddgll/convert-images.git"
